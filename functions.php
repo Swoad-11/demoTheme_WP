@@ -70,3 +70,29 @@ function demoTheme_enqueue_scripts() {
         'theme-main', get_template_directory_uri() . '/assets/js/main.js', array('jquery-slim'), '1.0.0', true);
 }
 add_action('wp_enqueue_scripts', 'demoTheme_enqueue_scripts');
+
+function demoTheme_widget_areas() {
+    register_sidebar(
+        array(
+            'name'          => 'Sidebar Area',
+            'id'            => 'sidebar-1',
+            'before_widget' => '<div class="widget-item mb-4 %2$s" id="%1$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h3 class="widget-title mb-3">',
+            'after_title'   => '</h3>',
+        )
+    );
+
+    register_sidebar(
+        array(
+            'name'          => 'Footer Area',
+            'id'            => 'footer-1',
+            'before_widget' => '<div class="widget-item mb-4 %2$s" id="%1$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h3 class="widget-title mb-3">',
+            'after_title'   => '</h3>',
+        )
+    );
+}
+add_action('widgets_init', 'demoTheme_widget_areas');
+?>
